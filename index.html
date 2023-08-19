@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,15 +13,22 @@
         #details {
             opacity: 0;
         }
+        #loading {
+            display: none;
+        }
     </style>
     <title>Geo Location</title>
 </head>
+
 <body>
-    
+
     <div class="container my-5">
-        <div id="errors"></div>        
+        <div id="errors"></div>
         <button id="btnLocation" type="button" class="btn btn-danger">
             Get Location <i class="fa-solid fa-location-crosshairs"></i>
+            <div id="loading">
+                <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+            </div>
         </button>
         <p class="mt-3">OR</p>
         <div class="card mb-3">
@@ -31,8 +39,8 @@
                 </div>
             </div>
         </div>
-        <div id="details">        
-            <div class="card mb-3" >
+        <div id="details">
+            <div class="card mb-3">
                 <div class="card-header">Search Result</div>
                 <div class="card-body">
                     <div class="row" id="country-details">
@@ -49,10 +57,11 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 
     <!-- JS -->
     <script src="codegrid.js"></script>
     <script src="app.js"></script>
 </body>
+
 </html>

@@ -3,11 +3,13 @@ grid = codegrid.CodeGrid(); // initialize
 document.querySelector("#btnSearch").addEventListener("click", () => {
     let text = document.querySelector("#txtSearch").value;
     document.querySelector("#details").style.opacity = 0;
+    document.querySelector("#loading").style.display = "block";
     getCountry(text);
 });
 
 // Detect Location
 document.querySelector("#btnLocation").addEventListener("click", () => {
+    document.querySelector("#loading").style.display = "block";
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             async function onSuccess(position) {
@@ -37,6 +39,7 @@ document.querySelector("#btnLocation").addEventListener("click", () => {
                 });
             }, function onError(err) {
                 renderError(err);
+                document.querySelector("#loading").style.display = "none";
             });
     }
 });
@@ -70,6 +73,7 @@ async function getCountry(country) {
 }
 
 function renderCountry(data) {
+    document.querySelector("#loading").style.display = "none";
     document.querySelector("#country-details").innerHTML = "";
     document.querySelector("#neighbors").innerHTML = "";
 
@@ -122,6 +126,7 @@ function renderNeighbors(data) {
 }
 
 function renderError(err) {
+    document.querySelector("#loading").style.display = "none";
     const html = `
         <div class="alert alert-danger">
             ${err.message}
